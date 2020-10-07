@@ -14,20 +14,25 @@ export class ContentCardComponent implements OnInit {
     author: 'A name here',
     body: 'Here is some sort of content I guess?',
     id: 0,
-    title: 'Some test content'
+    title: 'Some test content',
+    tags: ['Tag1', 'Tag 2'],
+    type: 'SomeType'
   };
   content2: Content = {
     author: 'A second name here',
     body: 'More content?',
-    id: 0,
-    title: 'Some more test content'
+    id: 1,
+    title: 'Some more test content',
+    tags: ['Tag1', 'Tag 2'],
+    type: 'SomeType'
   };
   content3: Content = {
     author: 'A third name here',
     body: 'Maybe even more content????',
-    id: 0,
+    id: 2,
     title: 'Even more test content'
   };
+  // content list container declaration
   cl: ContentList;
   constructor() {
     this.cl = new ContentList();

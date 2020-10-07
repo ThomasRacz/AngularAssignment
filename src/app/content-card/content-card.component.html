@@ -1,1 +1,4 @@
-<p>{{cl.displayContent(0)}}</p>
+<p [innerHTML] = cl.displayContent(0)></p>
+<p [innerHTML] = cl.displayContent(1)></p>
+<!--NOTE: THIS ERROR IS INTENTIONAL TO DEMONSTRATE THE BONUS -->
+<p [innerHTML] = cl.displayContent(3)></p>
