@@ -1,4 +1,8 @@
-<p [innerHTML] = cl.displayContent(0)></p>
-<p [innerHTML] = cl.displayContent(1)></p>
-<!--NOTE: THIS ERROR IS INTENTIONAL TO DEMONSTRATE THE BONUS -->
-<p [innerHTML] = cl.displayContent(3)></p>
+<div class="content-{{ content.id }}">
+  <h1 class="title"> {{ content.title }}</h1>
+  <h2 class="author"> Written by {{ content.author }}</h2>
+  <h3 class="tags">{{ content.tags }}</h3>
+  <img (click)="revealContentID()" class="image" src="{{ content.imgUrl }}">
+  <p class="body" [innerHTML]= content.body ></p>
+  <p class="type">{{ content.type }}</p>
+</div>
