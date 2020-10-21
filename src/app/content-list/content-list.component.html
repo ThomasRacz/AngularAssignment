@@ -1,5 +1,7 @@
-<app-content-card
-*ngFor="let content of someContent; last as isLast"
-[content]="content"
-[class.is-Last]="isLast">
-</app-content-card>
+<div>
+  <input type="text" #title/>
+  <button (click)="filterContentByTitle(title.value)">Search</button>
+</div>
+<!--Quotes, Thoughts are the 2 types defined in the content -->
+<app-content-card class="quotes" *ngFor="let content of (someContent | contentFilterPipe: 'Quotes')" [content]="content"></app-content-card>
+<app-content-card class="thoughts" *ngFor="let content of (someContent | contentFilterPipe: 'Thoughts')" [content]="content"></app-content-card>
