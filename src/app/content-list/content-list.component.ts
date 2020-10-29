@@ -50,7 +50,6 @@ export class ContentListComponent implements OnInit {
     title: 'Some more test content',
     tags: ['Tag1', 'Tag 2'],
     type: 'Thoughts',
-    imgUrl: 'https://pbs.twimg.com/media/EkB6Xf8X0AInD7I?format=jpg&name=large'
   };
   content5: Content = {
     author: 'Rasanjeet Singh',

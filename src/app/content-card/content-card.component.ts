@@ -12,6 +12,8 @@ export class ContentCardComponent implements OnInit {
 
   }
   // function for displaying the contents id in the console when clicking the image
+  titleStyle = 'title';
+  tagsStyle = 'tags';
   revealContentID(): void {
     console.log('This contents ID: ' + this.content.id);
   }
