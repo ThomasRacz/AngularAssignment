@@ -13,7 +13,6 @@ export class HoverStyleDirective {
     console.log(this.decoType);
     if (this.decoType === 'title') {
       this.textDeco('underline');
-      this.textWeight(700);
     }
     if (this.decoType === 'tags') {
       this.textWeight(700);
