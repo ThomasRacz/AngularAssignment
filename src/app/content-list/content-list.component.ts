@@ -74,11 +74,19 @@ export class ContentListComponent implements OnInit {
   // Filter Methods
   filterContentByTitle(title: string): void {
     // sanitizing the input so its not case sensitive
+    this.someContent.push(this.content1);
+    console.log(this.someContent.length);
     const filteredContent = this.someContent.filter(c => c.title.toLowerCase() === title.toLowerCase());
     if (filteredContent.length > 0) {
       alert('There is content with that title!');
     } else {
       alert('There wasn\'t any content with that title!');
     }
+
+  }
+
+  clone(content: Content): void{
+    this.someContent.push(content);
+    this.someContent = Object.assign([], this.someContent);
   }
 }

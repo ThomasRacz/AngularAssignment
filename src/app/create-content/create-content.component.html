@@ -1,0 +1,7 @@
+<div class="inputSection">
+    <input id= "titleInput"  type="text" placeholder="Title"    #title/>
+    <input id= "authorInput" type="text" placeholder="Author"   #author/>
+    <input id= "bodyInput"   type="text" placeholder="Body"     #body/>
+    <button (click)="createContent(title.value, author.value, body.value)">Add</button>
+    <h1> {{ status }}</h1>
+</div>
