@@ -30,4 +30,9 @@ export class ContentListComponent implements OnInit {
       alert('There wasn\'t any content with that title!');
     }
   }
+
+  clone(content: Content): void{
+    this.someContent.push(content);
+    this.someContent = Object.assign([], this.someContent);
+  }
 }

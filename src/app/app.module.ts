@@ -7,7 +7,10 @@ import { ContentListComponent } from './content-list/content-list.component';
 import { ContentFilterPipePipe } from './content-filter-pipe.pipe';
 import { HoverStyleDirective } from './hover-style.directive';
 import { MessagesComponent } from './messages/messages.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
+import { CreateComponentComponent } from './create-component/create-component.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,10 +18,16 @@ import { MessagesComponent } from './messages/messages.component';
     ContentListComponent,
     ContentFilterPipePipe,
     HoverStyleDirective,
-    MessagesComponent
+    MessagesComponent,
+    CreateComponentComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, {
+        dataEncapsulation: false, delay: 1000
+      })
   ],
   providers: [],
   bootstrap: [AppComponent]
