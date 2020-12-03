@@ -1,0 +1,19 @@
+<mat-form-field appearance="fill">
+  <mat-label>Title</mat-label>
+  <input matInput id= "titleInput"  type="text" #title/>
+</mat-form-field>
+<br>
+<mat-form-field appearance="fill">
+  <mat-label>Author</mat-label>
+  <input matInput id= "authorInput" type="text" #author/>
+</mat-form-field>
+<br>
+<mat-form-field appearance="fill">
+  <mat-label>Body</mat-label>
+  <textarea matInput id= "bodyInput" type="text" #body></textarea>
+</mat-form-field>
+<br>
+<button mat-flat-button color="primary" [mat-dialog-close]="[title.value, author.value, body.value]">Submit Content</button>
+
+
+

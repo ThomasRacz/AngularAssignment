@@ -1,9 +1,19 @@
-<app-create-component (refreshEvent)="clone($event)"></app-create-component>
-<div>
-  <input type="text" #title/>
-  <button (click)="filterContentByTitle(title.value)">Search</button>
-</div>
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Search and Add Content </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput type="text" #title/>
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="filterContentByTitle(title.value)">Search</button>
+    <app-create-component (refreshEvent)="clone($event)"></app-create-component>
+  </mat-expansion-panel>
+</mat-accordion>
+
 <!--Quotes, Thoughts are the 2 types defined in the content
 <app-content-card class="quotes" *ngFor="let content of (someContent | contentFilterPipe: 'Quotes')" [content]="content"></app-content-card>
-<app-content-card class="thoughts" *ngFor="let content of (someContent | contentFilterPipe: 'Thoughts')" [content]="content"></app-content-card> -->
-<app-content-card class="thoughts" *ngFor="let content of (someContent | contentFilterPipe: '')" [content]="content"></app-content-card>
+<app-content-card class="thoughts" *ngFor="let content of (someContent | contentFilterPipe: 'Thoughts')" [content]="content"></app-content-card>
+<app-content-card class="thoughts" *ngFor="let content of (someContent | contentFilterPipe: '')" [content]="content"></app-content-card> -->
+<app-content-card *ngFor="let contentList of someContent" [content]="contentList"></app-content-card>

@@ -11,6 +11,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { CreateComponentComponent } from './create-component/create-component.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatDialogModule} from '@angular/material/dialog';
+import { AddContentDialogComponent } from './add-content-dialog/add-content-dialog.component';
+import { MatFormFieldModule} from '@angular/material/form-field';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { SnackbarComponentComponent } from './snackbar-component/snackbar-component.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,15 +28,27 @@ import { CreateComponentComponent } from './create-component/create-component.co
     ContentFilterPipePipe,
     HoverStyleDirective,
     MessagesComponent,
-    CreateComponentComponent
+    CreateComponentComponent,
+    AddContentDialogComponent,
+    SnackbarComponentComponent
   ],
+  entryComponents: [AddContentDialogComponent],
   imports: [
     BrowserModule,
+    MatButtonModule,
+    MatInputModule,
     HttpClientModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatExpansionModule,
+    MatSnackBarModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, {
-        dataEncapsulation: false, delay: 1000
-      })
+        dataEncapsulation: false, delay: 0
+      }),
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

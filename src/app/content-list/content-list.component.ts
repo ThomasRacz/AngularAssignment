@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Content} from '../helper-files/content-interface';
 import {ContentService} from '../services/content.service';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-content-list',
@@ -11,7 +12,7 @@ export class ContentListComponent implements OnInit {
   // content below
 
   someContent: Content[];
-  constructor(private service: ContentService) {
+  constructor(private service: ContentService, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -32,6 +33,7 @@ export class ContentListComponent implements OnInit {
   }
 
   clone(content: Content): void{
+    console.log('Called Clone for ' + content.title);
     this.someContent.push(content);
     this.someContent = Object.assign([], this.someContent);
   }

@@ -1,6 +1,8 @@
 import {Component, ElementRef, OnInit, Output, EventEmitter} from '@angular/core';
 import {Content} from '../helper-files/content-interface';
 import {ContentService} from '../services/content.service';
+import {AddContentDialogComponent} from '../add-content-dialog/add-content-dialog.component';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-component',
@@ -12,12 +14,13 @@ export class CreateComponentComponent implements OnInit {
   newContent: Content;
   status = '';
   idConst = 5;
-  constructor(private el: ElementRef, private contentService: ContentService) {}
+  constructor(private el: ElementRef, private contentService: ContentService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
   }
 
   createContent(title: string, author: string, body: string): void {
+    console.log('HERE IS THE DATA' + title + ' ' + author + ' ' + body);
     let contentObject: Content;
     if (title !== '' || author !== '' || body !== '') {
       this.idConst ++;
@@ -28,24 +31,29 @@ export class CreateComponentComponent implements OnInit {
         title,
         type: ''
       };
-      // get all the form fields and clear them when we are able to create a new piece of content
-      const titleInput = this.el.nativeElement.querySelector('#titleInput');
-      const authorInput = this.el.nativeElement.querySelector('#authorInput');
-      const bodyInput = this.el.nativeElement.querySelector('#bodyInput');
-      titleInput.value = '';
-      authorInput.value = '';
-      bodyInput.value = '';
       // log that we made some new content
       console.log('Created ' + this.newContent.title);
       // use the output event to send the data over
-      this.contentService.addItem(this.newContent).subscribe(object => {
-        contentObject = object;
-        this.refreshEvent.emit(contentObject);
-      });
+      try {
+        this.contentService.addItem(this.newContent).subscribe(object => {
+          contentObject = object;
+          this.refreshEvent.emit(contentObject);
+        });
+      } catch (e) {
+        console.log(e);
+      }
+
       this.status = '';
     } else {
 
     }
   }
 
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AddContentDialogComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      // pass the array of data from the dialog to the create function
+      this.createContent(result[0], result[1], result[2]);
+    });
+  }
 }
