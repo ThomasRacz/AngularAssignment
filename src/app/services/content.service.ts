@@ -17,10 +17,18 @@ export class ContentService {
         'application/json' })
   };
 
+  // get single content object
+  getContent(id: number): Observable<Content> {
+    return this.http.get<Content>('api/content/' + id);
+  }
+
+  // add content objects
   addItem(content: Content): Observable<Content>{
     this.messageService.add('Added Content');
     return this.http.post<Content>('api/content', content, this.httpOptions);
   }
+
+  // get all content objects
   observableContent(): Observable<Content[]>{
     this.messageService.add('Content retrieved!');
     // return of(someContentDB);
